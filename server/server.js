@@ -4,12 +4,12 @@ const express = require('express');
 const socketIO =require('socket.io'); 
 
 const publicPath = path.join(__dirname, '../public');
+const port = process.env.PORT || 42068; 
 
 let app = express();
 let server = http.createServer(app);
 let io = socketIO(server);
 
-app.set('port', (process.env.PORT || 42068));
 app.use(express.static(publicPath));
 
 io.on('connection', (socket) => {
@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
 
 });
 
-server.listen(app.get('port'), () => {
-    console.log(`Servidor en puerto`, app.get('port'));
+server.listen(port, () => {
+    console.log(`Servidor en puerto ${port}`);
 });
 
