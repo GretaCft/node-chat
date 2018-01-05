@@ -9,7 +9,7 @@ let app = express();
 let server = http.createServer(app);
 let io = socketIO(server);
 
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 42068));
 app.use(express.static(publicPath));
 
 io.on('connection', (socket) => {
